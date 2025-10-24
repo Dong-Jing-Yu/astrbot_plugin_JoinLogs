@@ -43,7 +43,7 @@ class JoinLogsPlugin(Star):
                 await event.send(event.plain_result(reply))
 
 
-    @filter.command("查",alias={'查入群'， '查进群'})
+    @filter.command("查",alias={'查入群','查进群'})
     async def Cha(self, event: AstrMessageEvent):
         pass
         
