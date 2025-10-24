@@ -1,9 +1,3 @@
-# helloworld
+# 加群记录
 
-AstrBot 插件模板
-
-A template plugin for AstrBot plugin feature
-
-# 支持
-
-[帮助文档](https://astrbot.app)
+记录加群的时间以及申请内容(如果有)
