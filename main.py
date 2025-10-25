@@ -1,7 +1,13 @@
-from astrbot.core.platform.sources.aiocqhttp.aiocqhttp_message_event import AiocqhttpMessageEvent
+
+from astrbot.core.platform.sources.aiocqhttp.aiocqhttp_message_event import (
+    AiocqhttpMessageEvent,
+)
+from astrbot.core.star.filter.event_message_type import EventMessageType
 from astrbot.api.event import filter, AstrMessageEvent, MessageEventResult
 from astrbot.api.star import Context, Star, register
+from astrbot.core import AstrBotConfig
 from astrbot.api import logger
+
 
 @register("astrbot_plugin_JoinLogs", "东经雨", "记录入群时的一些信息", "1.0")
 class JoinLogsPlugin(Star):
