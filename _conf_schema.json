@@ -1,0 +1,28 @@
+{
+  "$schema": "https://docs.astrbot.app/schema/plugin_conf_schema.json",
+  "properties": {
+    "auto_delete_days": {
+      "type": "integer",
+      "title": "自动删除天数",
+      "description": "超过该天数未在群里的记录将被删除，0 表示在退群时删除",
+      "default": 0
+    },
+    "enable_log": {
+      "type": "boolean",
+      "title": "启用日志",
+      "default": true
+    },
+    "enable_record": {
+      "type": "boolean",
+      "title": "启用入群记录",
+      "default": true
+    },
+    "whitelist_groups": {
+      "type": "array",
+      "title": "记录的群聊白名单",
+      "description": "只有这些群会记录入群信息",
+      "items": { "type": "integer" },
+      "default": []
+    }
+  }
+}
