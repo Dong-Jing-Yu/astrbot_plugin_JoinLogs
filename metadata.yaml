@@ -1,5 +1,5 @@
 name: astrbot_plugin_JoinLogs # 这是你的插件的唯一识别名。
 desc: 记录入群时的一些信息 # 插件简短描述
-version: v1.0 # 插件版本号
+version: v1.1 # 插件版本号
 author: 东经雨 # 作者
 repo: https://github.com/Dong-Jing-Yu/astrbot_plugin_JoinLogs # 插件的仓库地址
