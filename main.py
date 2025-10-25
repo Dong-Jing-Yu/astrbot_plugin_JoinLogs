@@ -38,10 +38,8 @@ class JoinLogsPlugin(Star):
             reply = f"[进群申请]\n昵称：{nickname}\nQQ：{user_id}\nflag：{flag}"
             if comment:
                 reply += f"\n{comment}"
-            if self.conf["admin_audit"]:
-                await self._send_admin(client, reply)
-            else:
-                await event.send(event.plain_result(reply))
+            logger.info(f"测试:{reply}")
+            # await event.send(event.plain_result(reply))
 
 
     @filter.command("查",alias={'查入群','查进群'})
