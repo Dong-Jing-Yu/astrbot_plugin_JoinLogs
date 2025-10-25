@@ -19,36 +19,32 @@ class JoinLogsPlugin(Star):
     
     @filter.event_message_type(filter.EventMessageType.GROUP_MESSAGE)
     async def event_monitoring(self, event: AiocqhttpMessageEvent):
-        """监听进群/退群事件"""
-        for attr in dir(event.message_obj):
-            logger.info(f"message_obj:{attr}")
+        """监听群事件"""
         raw = getattr(event.message_obj, "raw_message", None)
         if not isinstance(raw, dict):
             return
-
-        for attr in dir(raw):
-            logger.info(f"raw:{attr}")
-
-
         # client = event.bot
         # group_id: int = raw.get("group_id", 0)
         # user_id: int = raw.get("user_id", 0)
-        # # 进群申请事件
-        # if (
-        #     self.conf["enable_audit"]
-        #     and raw.get("post_type") == "request"
-        #     and raw.get("request_type") == "group"
-        #     and raw.get("sub_type") == "add"
-        # ):
-        #     comment = raw.get("comment")
-        #     flag = raw.get("flag", "")
-        #     nickname = (await client.get_stranger_info(user_id=user_id))[
-        #         "nickname"
-        #     ] or "未知昵称"
-        #     reply = f"[进群申请]\n昵称：{nickname}\nQQ：{user_id}\nflag：{flag}"
-        #     if comment:
-        #         reply += f"\n{comment}"
-        #     logger.info(f"测试:{reply}")
+        
+        logger.info(f"raw:{raw}")
+
+        # 进群申请事件
+        if (
+            self.conf["enable_audit"]
+            and raw.get("post_type") == "request"
+            and raw.get("request_type") == "group"
+            and raw.get("sub_type") == "add"
+        ):
+            comment = raw.get("comment")
+            flag = raw.get("flag", "")
+            nickname = (await client.get_stranger_info(user_id=user_id))[
+                "nickname"
+            ] or "未知昵称"
+            reply = f"[进群申请]\n昵称：{nickname}\nQQ：{user_id}\nflag：{flag}"
+            if comment:
+                reply += f"\n{comment}"
+            logger.info(f"测试:{reply}")
             # await event.send(event.plain_result(reply))
 
 
