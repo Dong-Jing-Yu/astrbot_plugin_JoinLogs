@@ -9,7 +9,7 @@ from astrbot.core import AstrBotConfig
 from astrbot.api import logger
 
 
-@register("astrbot_plugin_JoinLogs", "东经雨", "记录入群时的一些信息", "1.0")
+@register("astrbot_plugin_JoinLogs", "东经雨", "记录入群时的一些信息", "1.1")
 class JoinLogsPlugin(Star):
     def __init__(self, context: Context):
         super().__init__(context)
@@ -18,8 +18,8 @@ class JoinLogsPlugin(Star):
         """可选择实现异步的插件初始化方法，当实例化该插件类之后会自动调用该方法。"""
     
     @filter.platform_adapter_type(filter.PlatformAdapterType.AIOCQHTTP)
-    @filter.event_message_type(filter.EventMessageType.GROUP_MESSAGE)
-    async def event_monitoring(self, event: AiocqhttpMessageEvent, *args, **kwargs):
+    @filter.event_message_type(filter.EventMessageType.GROUP_INCREASE)
+    async def event_monitoring(self, event: AiocqhttpMessageEvent):
         """监听进群/退群事件"""
         raw = getattr(event.message_obj, "raw_message", None)
         if not isinstance(raw, dict):
