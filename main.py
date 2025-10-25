@@ -19,7 +19,7 @@ class JoinLogsPlugin(Star):
     
     @filter.platform_adapter_type(filter.PlatformAdapterType.AIOCQHTTP)
     @filter.event_message_type(filter.EventMessageType.GROUP_MESSAGE)
-    async def event_monitoring(self, event: AiocqhttpMessageEvent):
+    async def event_monitoring(self, event: AiocqhttpMessageEvent, *args, **kwargs):
         """监听进群/退群事件"""
         raw = getattr(event.message_obj, "raw_message", None)
         if not isinstance(raw, dict):
